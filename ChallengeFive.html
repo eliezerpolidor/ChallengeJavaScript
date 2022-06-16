@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Time right now is: </title>
+    <script>
+        var time = new Date();
+        document.write('Programador EliezerP...........' + ' / Hora Actual: ' + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds())
+    </script>
+</head>
+
+<body>
+    <h1>Calcular Dias Para Tú Cumpleaños</h1>
+    <p>Por favor, Introducir Fecha de Cumpleaños</p>
+    <input name="Fecha" type="date" id="fecha"><br>
+    <button type="button" onclick="calculoDias(fecha)">Cálculo</button>
+    <p id="fech"></p>
+    <script>
+        function calculoDias() {
+            let diaFec = new Date(document.getElementById("fecha").value);
+            let diaAct = new Date();
+
+            if (diaFec == '') {
+                texto = 'Por Favordebes Introducir una Fecha de Cumpleaños...... GRACIAS......';
+            } else {
+
+                var diferencia = Math.abs(diaFec - diaAct)
+                var diaDif = diferencia / (1000 * 3600 * 24)
+
+                texto = Math.trunc(diaDif);
+                var dec = diaDif - texto;
+            }
+
+            console.log(diaDif)
+            console.log(texto)
+            console.log(dec)
+            if (dec > (1 / 2)) {
+                document.getElementById("fech").innerHTML = "Para tú Cumpleaños Faltan: " +
+                    texto + " Dias y " + "un poco mas de medio dia, Aproximadamente " + dec.toFixed(1) + " de dia";
+            }
+            if (dec < (1 / 2)) {
+                document.getElementById("fech").innerHTML = "Para tú Cumpleaños Faltan: " +
+                    texto + " Dias y " + "menos de medio dia, Aproximadamente " + dec.toFixed(1) + " de dia";
+            }
+            if (dec === (1 / 2)) {
+                document.getElementById("fech").innerHTML = "Para tú Cumpleaños Faltan: " +
+                    texto + " Dias y " + "medio dia (1/2) " + dec.toFixed(1);
+            }
+
+        }
+    </script>
+</body>
+
+</html>

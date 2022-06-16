@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Crear Arbol de Navidad</h1>
+    <p>Por favor, Introducir Altura / Numero entre 5 - 100:</p>
+    <input id="altura"><br>
+    <button type="button" onclick="crearArbolNavidad()">Crear Arbol Navidad</button>
+    <p id="arbol"></p>
+    <script>
+        function crearArbolNavidad() {
+            var alto, y, suma, text, alt;
+            var estrella = 0;
+            var raya = 0;
+            var ln = 0;
+            alto = document.getElementById("altura").value;
+
+            if (isNaN(alto)) {
+                texto = "Es necesarios introducir un número válido";
+            } else {
+                //ponemos parseInt para transformar a numero
+                alt = parseInt(alto);
+                alt = alt * 2 - 1;
+                texto = alt;
+            }
+
+            document.getElementById("arbol").innerHTML = texto;
+
+            for (let j = 0; j < parseInt(alto); j++) {
+
+                for (let i = 0; i < alt; i++) {
+                    if (i === (parseInt(alto) - 1)) {
+                        if (j === estrella) {
+                            document.write('*')
+                            estrella = estrella + 1;
+                            // raya=raya+1
+                        } else {
+                            for (let index = 0; index < estrella; index++) {
+                                document.write('*');
+                            }
+                        }
+                    } else {
+                        if (i === (alt - 1)) {
+                            document.writeln('- <br>')
+                            estrella = estrella + 2;
+                            // console.log('estrella: ' + estrella)
+                            // console.log('alt: ' + alt)
+                            raya = (alt - estrella) / 2;
+                            // console.log('raya: ' + raya)
+                        } else {
+                            console.log('raya: ' + raya)
+                            if (raya === 0) {
+                                console.log('entro al if.... con raya = 0')
+                                document.write('-')
+                            }
+                            for (let ind = 0; ind < raya; ind++) {
+                                document.write('-')
+                            }
+                            // console.log('raya: ' + raya)
+                            // if (raya === 0) {
+                            //     console.log('entro al if.... con raya = 0')
+                            //     document.write('-')
+                            // } else {
+                            //     for (let ind = 0; ind < raya; ind++) {
+                            //         document.write('-')
+                            //     }
+                            // }
+
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
